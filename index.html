@@ -1,0 +1,105 @@
+
+<html>  
+<head>
+<title>Flight Delays</title>  
+<script type="text/javascript" src="script.js">
+    </script>  
+<link rel="stylesheet" href="styles.css">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body onload=project()> 
+<div id="tooltip"></div>
+<div>
+<h2 class="section">How does the choice of airlines, airports, and day of week<br>affect 
+    flight delays,<br> and how to avoid flight delays.</h2>
+Flight is a common transportation tool for many people. However, 
+flight delay is a common issue that many passengers who frequently 
+travel by flights experienced. A bad flight delay can easily ruin one's plans, 
+so this analysis aims to help flight passengers avoid bad flight delays.<br>
+Data is modified and cleaned based on https://www.kaggle.com/datasets/usdot/flight-delays?resource=download&select=flights.csv
+
+<br>
+<div>
+<h3>Factors that affect flights' arrival delays</h3>
+
+<div id="part1">
+</div>
+<div id="plot1" class="center_plot">
+</div>
+Some people believe that large airlines with many flights will have less delays. However,
+more flights does not mean less delays. The plot shows that passengers should not pick blindly
+pick airlines that have more flights. Airlines with relatively lower amount of flights have extremely
+high and extremely low average delay times, and the plot does not show a positive relationship between
+average delay time and the amount of flights.
+
+</div>    
+</div>
+    
+<div>
+<div id="part2">
+
+</div>
+<h4>Airlines vs Delay</h4>
+Different airlines seems to have distinct delay times, so the choice of airlines should affect the chance
+of experiencing flight delays. Below I am going to demonstrate the differenct in delays for each airline.
+<div id="plot2" class="center_plot">
+</div>
+In this bar chart I calculated the probability of severe flight delays for each airline. I define a severe flight
+delay as a delay of 30 minutes or more. I did not take less intense delays into account because those delays usually
+does not impact passengers' plan very much, so I used 30 minutes as the tolerance range for passengers. Also, I believe
+the probability of severe delays is a better measurement of delays compared to the average delay time because sometimes there
+are special situations that can make the delay value very high, and the average would take these outliers into account.
+<br>From the results we can see that different airlines have very different probability of encounting severe delays.
+Hawaiian Airlines has the lowest probability of 0.044, and Spirit Air Lines has the highest probability of 0.198, meaning
+that roughly out of every 5 flights there is one that will have an arrival delay 30 minutes or more for Spirit Air Lines.
+</div>    
+
+<div>
+<div id="part3">
+</div>
+<h4>State vs Delay</h4>
+Some may wonder if the difference in states play a role in affecting delays. Different states have different weather, policies,
+and expenditure. Below I will demonstrate the average probability of severe flights delays for all airports in each state.<br>
+Darker colors means higher possibility of severe flights delays. Note that the darkness of the color does not represent the exact
+value of the possibility because I log the values when filling in colors due to a few extreme values, which would decrease the 
+interpretability of the map.
+<div id="plot3" class="center_plot">
+</div>
+We can see that, in general, different states have various probability values, showing that state does affect the chance of severe
+flight delays. While most state have a similar probability around 10%, UT (Utah) has the lowest probability of 4.868% and DE (Delaware)
+has the highest probability of 26.842%
+</div>    
+
+<div id="part4">
+    </div>
+    <h4>Airport vs Delay</h4>
+Other than airlines, sometimes passengers can also choose between airports. Below, I am going to demonstrate how much
+different airports affect the probability of severe flight delays. The result of delays cannot be attributed to a single
+airport, so I am compute the average probability of severe flights delays for all flights for each route between two airports.
+<br>Below, by default I will demonstrate the 10 route with the lowest probability of severe flights delays. I only consider routes with 52 
+or more flights in the entire year, which is roughly at least 1 flight per week. This allows to remove the unpopular routes that
+can easily have extremely values, and it is unlikely that the general audience will care about these unpopular flight routes.
+Thicker links represent higher possibilities of sever flights delays for the route.
+<br>You can change between viewing the 10 route with the lowest probability of severe flights delays 
+and the 10 route with the highest probability of severe flights delays by switch the button below.
+<br><div style="display: flex">
+
+    <input type="radio" id="lowest" name="shape" value="lowest" checked>
+    <label for="lowest">Lowest 10</label>
+    
+    <input type="radio" id="highest" name="shape" value="highest">
+    <label for="highest">Highest 10</label>
+
+</div>
+<div id="plot4" class="center_plot">
+</div>
+From the "lowest 10" linked graph, we can see that airports like SLC (Salt Lake City International Airport) and PDX (Portland International Airport) have many airports linked to them, showing that SLC and PDX 
+have the routes with the lowest chances of delaying. In the "highest 10" linked graph, LGA (LaGuardia Airport) is the one linked to most airports, showing that
+it is an airport with routes that have high chances of delaying and should be avoid by people who dislike flight delays. 
+</div> 
+<h4>Conclusion</h4>
+Every passenger have their own needs where choosing for a flight. From my analysis, I believe the choice of airports and airlines affect the chance of severe delays the most.
+I believe you will be able to find the best flight ticket for your trip plans by choosing the best airline and airport based on visualizations above.
+   
+</body>  
+</html>  
